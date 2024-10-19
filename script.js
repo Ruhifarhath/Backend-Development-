@@ -41,16 +41,26 @@
 
 //TOPIC 2 OBJECTS
  
-var obj={
-    name: "tv",
-    price:34500,
-    model: 2019
+// var obj={
+//     name: "tv",
+//     price:34500,
+//     model: 2019
+// }
+
+
+// Object.freeze(obj)
+// obj.price=100
+
+
+// TOPIC 3 ASYNC JS
+
+async function abcd() {
+    var blob=await fetch('https://randomuser.me/api/')
+    var ans= await blob.json();
+    console.log(ans.results[0].name);
 }
 
-
-Object.freeze(obj)
-obj.price=100
-
+abcd()
 
 
 
