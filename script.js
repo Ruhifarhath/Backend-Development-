@@ -29,11 +29,30 @@ const fs = require('fs');
 
 // HTTP
 
-const http = require('http');
+// const http = require('http');
 
-const server= http.createServer(function(req, res){
-   res.end("Ruhi U have successfully created a server! ")
+// const server= http.createServer(function(req, res){
+//    res.end("Ruhi U have successfully created a server! ")
+// })
+
+// server.listen(3000) // to run use node script.js and then in browser type localhost:3000
+ 
+
+// read file
+fs.readFile("newName.txt",function(err){
+   if(err) console.error(err)
+   else console.log("file read successful")
 })
 
-server.listen(3000) // to run use node script.js and then in browser type localhost:3000
- 
+// folder read or read directory
+
+fs.readdir("./copy",function(err){
+   if(err) console.error(err)
+   else console.log("folder read successful")
+})
+
+//create or making a new folder
+fs.mkdir("./newFolder",{recursive: true}, (err)=>{
+   if(err) throw err
+})
+
