@@ -1,58 +1,16 @@
-const fs = require('fs');
+const express = require('express')
+const app= express()
 
-// fs.appendFile("intro.txt", "Append file appends data to already existing file`", function(err){
-//         if(err) console.error(err);
-//         else console.log("done")
-//     })
-
-// fs.rename("intro.txt","newName.txt",function(err){
-//     if(err) console.error(err);
-//     else console.log("done")
-// })
-
-
-//FOR COPY FILE OPERATION WE ARE CREATING A COPY FOLDER AND TELLING TO CREATE A COPIED FILE IN THAT FOLDER
-
-// fs.copyFile("newName.txt","./copy1/copied.txt",function(err){
-//     if(err) console.error(err);
-//     else console.log("done")
-// })
-
-
-// unlink  USED TO DELETE FILE
-//  fs.unlink("./copy/copied.txt",function(err){
-//     if(err) console.error(err);
-//     else console.log("done")
-//  }) 
-
-
-
-// HTTP
-
-// const http = require('http');
-
-// const server= http.createServer(function(req, res){
-//    res.end("Ruhi U have successfully created a server! ")
-// })
-
-// server.listen(3000) // to run use node script.js and then in browser type localhost:3000
- 
-
-// read file
-fs.readFile("newName.txt",function(err){
-   if(err) console.error(err)
-   else console.log("file read successful")
+app.use(function(req,res,next){
+   console.log("This is a middleware")
+   next()
+});
+app.get("/",function(req,res){
+   res.send("This is default route page")
 })
 
-// folder read or read directory
-
-fs.readdir("./copy",function(err){
-   if(err) console.error(err)
-   else console.log("folder read successful")
+app.get("/profile", function(req,res){
+   res.send("This is the profile route")
 })
 
-//create or making a new folder
-fs.mkdir("./newFolder",{recursive: true}, (err)=>{
-   if(err) throw err
-})
-
+app.listen(3000)
